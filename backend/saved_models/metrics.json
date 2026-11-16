@@ -1,0 +1,134 @@
+{
+  "metrics": [
+    {
+      "r2": 0.9294493549691148,
+      "mae": 0.8042431955306342,
+      "mse": 10.63449497694495,
+      "rmse": 3.261057340333799,
+      "r2_log": 0.9594308426380495,
+      "key": "cart",
+      "name": "CART (Decision Tree)",
+      "train_time_s": 8.77,
+      "family": "base"
+    },
+    {
+      "r2": 0.9340402024460224,
+      "mae": 0.7581714644906347,
+      "mse": 9.942490752012334,
+      "rmse": 3.1531715386277885,
+      "r2_log": 0.9639278725587633,
+      "key": "boosting",
+      "name": "Gradient Boosting",
+      "train_time_s": 179.4,
+      "family": "base"
+    },
+    {
+      "r2": 0.9177173564934693,
+      "mae": 0.8695255929243196,
+      "mse": 12.40292500057068,
+      "rmse": 3.521778670014724,
+      "r2_log": 0.9541929884219208,
+      "key": "basis",
+      "name": "Adaptive Basis Function (Splines)",
+      "train_time_s": 5.86,
+      "family": "base"
+    },
+    {
+      "r2": 0.9178077111410176,
+      "mae": 0.8687504583861837,
+      "mse": 12.389305337064052,
+      "rmse": 3.519844504671201,
+      "r2_log": 0.9543002774761341,
+      "key": "gam",
+      "name": "Generalized Additive Model",
+      "train_time_s": 44.46,
+      "family": "base"
+    },
+    {
+      "r2": 0.9348043071256745,
+      "mae": 0.7157204562134858,
+      "mse": 9.82731296201391,
+      "rmse": 3.134854536021394,
+      "r2_log": 0.9666944865297213,
+      "key": "random_forest",
+      "name": "Random Forest",
+      "train_time_s": 18.27,
+      "family": "base"
+    },
+    {
+      "r2": 0.931952735047442,
+      "mae": 0.7635213697301655,
+      "mse": 10.257146437371716,
+      "rmse": 3.2026780102551236,
+      "r2_log": 0.9627201698362532,
+      "key": "voting",
+      "name": "Voting Ensemble",
+      "train_time_s": 0.0,
+      "family": "combined"
+    },
+    {
+      "r2": 0.9327337247540785,
+      "mae": 0.7568465822882037,
+      "mse": 10.139423472420289,
+      "rmse": 3.184246138793339,
+      "r2_log": 0.9632488760373427,
+      "key": "weighted",
+      "name": "Weighted Ensemble",
+      "train_time_s": 0.0,
+      "family": "combined"
+    },
+    {
+      "r2": 0.9348043071256745,
+      "mae": 0.7157204562134858,
+      "mse": 9.82731296201391,
+      "rmse": 3.134854536021394,
+      "r2_log": 0.9666944865297213,
+      "key": "bma",
+      "name": "Bayesian Model Averaging",
+      "train_time_s": 0.0,
+      "family": "combined"
+    }
+  ],
+  "best_model": {
+    "key": "random_forest",
+    "name": "Random Forest",
+    "r2": 0.9348043071256745
+  },
+  "best_base_model": {
+    "key": "random_forest",
+    "name": "Random Forest",
+    "r2": 0.9348043071256745
+  },
+  "split": {
+    "train": 144185,
+    "validation": 30898,
+    "test": 30898
+  },
+  "target": "Yield (t/ha) = Production / Area; models trained on log1p(Yield), metrics reported in t/ha",
+  "features": [
+    "crop_te",
+    "crop_season_te",
+    "state_crop_te",
+    "district_crop_te",
+    "district_index",
+    "Crop_Year",
+    "log_area",
+    "Annual_Rainfall"
+  ],
+  "feature_labels": {
+    "crop_te": "Crop baseline",
+    "crop_season_te": "Crop \u00d7 Season",
+    "state_crop_te": "State \u00d7 Crop",
+    "district_crop_te": "District \u00d7 Crop",
+    "district_index": "District productivity",
+    "Crop_Year": "Crop year",
+    "log_area": "Cultivated area (log)",
+    "Annual_Rainfall": "Annual rainfall"
+  },
+  "trained_at": "2026-11-17 00:36:24",
+  "versions": {
+    "scikit-learn": "1.8.0",
+    "numpy": "2.4.3",
+    "pandas": "3.0.1"
+  }
+}

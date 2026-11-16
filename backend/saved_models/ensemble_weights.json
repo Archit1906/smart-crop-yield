@@ -1,0 +1,23 @@
+{
+  "voting": {
+    "cart": 0.2,
+    "boosting": 0.2,
+    "basis": 0.2,
+    "gam": 0.2,
+    "random_forest": 0.2
+  },
+  "weighted": {
+    "cart": 0.2013051047629474,
+    "boosting": 0.2273304903654482,
+    "basis": 0.17333134176654494,
+    "gam": 0.17377166369382932,
+    "random_forest": 0.22426139941123002
+  },
+  "bma": {
+    "cart": 0.0,
+    "boosting": 0.0,
+    "basis": 0.0,
+    "gam": 0.0,
+    "random_forest": 1.0
+  }
+}

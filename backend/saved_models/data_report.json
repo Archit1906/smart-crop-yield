@@ -1,0 +1,85 @@
+{
+  "steps": [
+    {
+      "step": "missing_production",
+      "rows_before": 246091,
+      "rows_after": 242361,
+      "removed": 3730,
+      "note": "Rows with missing Production/Area dropped (target cannot be computed)."
+    },
+    {
+      "step": "duplicates",
+      "rows_before": 242361,
+      "rows_after": 242361,
+      "removed": 0,
+      "note": "Exact duplicates and duplicate State/District/Year/Season/Crop keys removed."
+    },
+    {
+      "step": "zero_values",
+      "rows_before": 242361,
+      "rows_after": 238838,
+      "removed": 3523,
+      "note": "Rows with zero Production or Area dropped (ambiguous: failure vs. non-reporting)."
+    },
+    {
+      "step": "unit_exclusions",
+      "rows_before": 238838,
+      "rows_after": 234327,
+      "removed": 4511,
+      "note": "Coconut: Production reported in number of nuts, not tonnes; Sannhamp: Production unit (bales vs tonnes) is ambiguous in the source; Oilseeds total: Aggregate of other crops, not a crop"
+    },
+    {
+      "step": "rainfall_join",
+      "rows_before": 234327,
+      "rows_after": 216829,
+      "removed": 17498,
+      "note": "Inner join on State + Crop_Year. States/years without a rainfall record (e.g. Rajasthan, Chandigarh, A&N Islands, Dadra & Nagar Haveli, Telangana before 2013) are excluded rather than imputed."
+    },
+    {
+      "step": "rare_crops",
+      "rows_before": 216829,
+      "rows_after": 206917,
+      "removed": 9912,
+      "note": "Crops with fewer than 1000 records removed."
+    },
+    {
+      "step": "outliers",
+      "rows_before": 206917,
+      "rows_after": 205981,
+      "removed": 936,
+      "note": "Area < 1 ha removed; per-crop log-yield outside [Q1 - 3\u00b7IQR, Q3 + 3\u00b7IQR] removed."
+    }
+  ],
+  "raw_district_rows": 246091,
+  "raw_district_columns": [
+    "State_Name",
+    "District_Name",
+    "Crop_Year",
+    "Season",
+    "Crop",
+    "Area",
+    "Production"
+  ],
+  "unit_conversions": {
+    "Cotton(lint)": "bales x 0.17 t",
+    "Jute": "bales x 0.18 t",
+    "Mesta": "bales x 0.18 t"
+  },
+  "final_rows": 205981,
+  "n_states": 29,
+  "n_districts": 613,
+  "n_crops": 43,
+  "years": [
+    1997,
+    2015
+  ],
+  "feature_selection": {
+    "dropped": {
+      "Production": "Used to compute the target (Yield = Production / Area) -> data leakage.",
+      "Fertilizer, Pesticide": "In the Kaggle state file these equal Area x a single constant per year (Fertilizer/Area identical for every row in a year: e.g. 1997 = 95.17). They carry no information beyond Area and Year and are not real measurements.",
+      "Kaggle Yield column": "Does not equal Production/Area for most rows; Yield is recomputed.",
+      "Temperature, humidity, soil N/P/K, pH": "Not present in any source that can be matched by district and year; not used and not invented."
+    },
+    "corr_fertilizer_area": 0.9732554116001882
+  }
+}

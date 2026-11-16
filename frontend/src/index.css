@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-forest-950: #0f2716;
+  --color-forest-900: #163a20;
+  --color-forest-800: #1d4a2a;
+  --color-forest-700: #255c34;
+  --color-forest-600: #2f7040;
+  --color-forest-500: #3f8a52;
+  --color-sprout-300: #b9d99f;
+  --color-sprout-200: #d4e8c3;
+  --color-sprout-100: #e8f1df;
+  --color-sprout-50:  #f2f7ec;
+  --color-paper:      #f7f5ef;
+  --color-paper-2:    #efece3;
+  --color-ink:        #23251f;
+  --color-ink-2:      #4d5047;
+  --color-ink-3:      #7a7d72;
+  --color-line:       #dcd9cd;
+  --color-wheat:      #c69a2b;
+  --color-soil:       #8a5a3b;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+}
+h1, h2, h3, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* recessive chart chrome */
+.recharts-cartesian-grid line { stroke: #e6e3d8; }
+.recharts-text { fill: #6b6e64; font-size: 11px; }
+.recharts-legend-item-text { color: #4d5047 !important; font-size: 12px; }
+
+.field-input {
+  @apply w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink outline-none transition
+         focus:border-forest-600 focus:ring-2 focus:ring-forest-600/15 disabled:bg-paper-2 disabled:text-ink-3;
+}
+.field-input[aria-invalid="true"] { @apply border-red-600 ring-2 ring-red-600/10; }
+
+.card { @apply rounded-lg border border-line bg-white; }
+.eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-600; }
